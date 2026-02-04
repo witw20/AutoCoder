@@ -28,6 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Generate Code with ChatGPT
+        if: contains(github.event.issue.labels.*.name, 'autocoder-bot')
         id: generate_code
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -35,20 +36,21 @@ jobs:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
+          chmod a=x scripts/script.sh
           ./scripts/script.sh ${{ env.GITHUB_TOKEN }} ${{ env.REPOSITORY }} ${{ env.ISSUE_NUMBER}} ${{ env.OPENAI_API_KEY }}
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: time-artifact # optional, default is artifact
+          name: autocoder-artifact
           path: time.txt
           if-no-files-found: error # optional, default is warn
           retention-days: 1
-          
+
       - name: Download Artifact
         uses: actions/download-artifact@v3
         with:
-          name: time-artifact
+          name: autocoder-artifact
 
       - name: Display Generated Code using the ls command
-        run: ls
+        run: ls -r
