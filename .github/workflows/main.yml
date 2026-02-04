@@ -43,7 +43,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: autocoder-artifact
-          path: time.txt
+          path: "autocoder-bot/${{ github.event.issue.number }}"
           if-no-files-found: error # optional, default is warn
           retention-days: 1
 
