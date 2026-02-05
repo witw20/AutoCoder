@@ -5,6 +5,7 @@ on:
 
 jobs:
   checkout-and-generate:
+    if: contains(github.event.issue.labels.*.name, 'autocoder-bot')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -25,7 +26,6 @@ jobs:
           echo "Issue Labels: $ISSUE_LABELS"
   
       - name: Generate Code with ChatGPT
-        if: contains(github.event.issue.labels.*.name, 'autocoder-bot')
         working-directory: ./scripts
         id: generate_code
         env:
