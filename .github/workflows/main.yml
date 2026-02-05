@@ -1,7 +1,7 @@
 name: Generate Code with ChatGPT on Issue Creation
 on:
   issues:
-    types: [opened, reopened]
+    types: [opened, reopened, labeled]
 
 jobs:
   checkout-and-generate:
