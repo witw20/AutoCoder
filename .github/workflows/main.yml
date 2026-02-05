@@ -40,6 +40,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
+          working-directory: ./scripts
           name: autocoder-artifact
           path: autocoder-bot/*
           if-no-files-found: error # optional, default is warn
