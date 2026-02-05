@@ -51,4 +51,4 @@ jobs:
           name: autocoder-artifact
 
       - name: Display Generated Code using the ls command
-        run: ls -R
+        run: ls -R autocoder-artifact/
