@@ -35,9 +35,10 @@ jobs:
           REPOSITORY: ${{ github.event.repository.name }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        working-directory: ./scripts
         run: |
-          chmod a=x scripts\script.sh
-          .\scripts\script.sh ${{ env.GITHUB_TOKEN }} ${{ env.REPOSITORY }} ${{ env.ISSUE_NUMBER}} ${{ env.OPENAI_API_KEY }}
+          chmod a=x script.sh
+          ./script.sh ${{ env.GITHUB_TOKEN }} ${{ env.REPOSITORY }} ${{ env.ISSUE_NUMBER}} ${{ env.OPENAI_API_KEY }}
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
