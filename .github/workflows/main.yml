@@ -1,10 +1,10 @@
-name: Access Issue Information
+name: Generate Code with ChatGPT on Issue Creation
 on:
   issues:
     types: [opened, reopened]
 
 jobs:
-  access_issue_info:
+  checkout-and-generate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -40,9 +40,8 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          working-directory: ./scripts
           name: autocoder-artifact
-          path: autocoder-bot/*
+          path: scripts/autocoder-bot/**
           if-no-files-found: error # optional, default is warn
           retention-days: 1
 
