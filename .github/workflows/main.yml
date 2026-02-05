@@ -24,9 +24,9 @@ jobs:
           echo "Issue Assignees: $ISSUE_ASSIGNEES"
           echo "Issue Labels: $ISSUE_LABELS"
   
-  generate_code:
-    runs-on: ubuntu-latest
-    steps:
+  # generate_code:
+  #   runs-on: ubuntu-latest
+  #   steps:
       - name: Generate Code with ChatGPT
         if: contains(github.event.issue.labels.*.name, 'autocoder-bot')
         working-directory: ./scripts
