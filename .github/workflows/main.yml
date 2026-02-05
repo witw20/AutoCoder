@@ -36,7 +36,7 @@ jobs:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          chmod a=x scripts/script.sh
+          chmod a=x ./scripts/script.sh
           ./scripts/script.sh ${{ env.GITHUB_TOKEN }} ${{ env.REPOSITORY }} ${{ env.ISSUE_NUMBER}} ${{ env.OPENAI_API_KEY }}
 
       - name: Upload Artifact
