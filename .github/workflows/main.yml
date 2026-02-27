@@ -55,6 +55,15 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
           body: "The repository has been checked out and the code generation process has started. A pull request will be created once the code is generated."
+          
+      - name: Use own script
+        uses: witw20/AutoCoder@main
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          REPOSITORY: ${{ github.event.repository.name }}
+          SCRIPT_PATH: ./scripts/script.sh
 
       - name: Complete job
         run: echo "Code generation process completed."

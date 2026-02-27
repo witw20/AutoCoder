@@ -26,6 +26,7 @@ inputs:
 
 outputs:
   pull_request_url:
+    value: ${{ steps.create_pull_request.outputs.pull_request_url }}
     description: 'The URL of the pull request that has been automatically created, containing the auto-generated code for review and potential merging.'
 
 runs:
@@ -62,15 +63,6 @@ runs:
       run: |
         ${{ inputs.SCRIPT_PATH }} ${{ env.GITHUB_TOKEN }} ${{ env.REPOSITORY }} ${{ env.ISSUE_NUMBER}} ${{ env.OPENAI_API_KEY }}
       shell: bash
-
-    - name: Use own repo
-      uses: witw20/AutoCoder@main
-      id: generate_code
-      env:
-        GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
-        REPOSITORY: ${{ inputs.REPOSITORY }}
-        ISSUE_NUMBER: ${{ inputs.ISSUE_NUMBER }}
-        OPENAI_API_KEY: ${{ inputs.OPENAI_API_KEY }}
     
     - name: Commit files
       run: |
