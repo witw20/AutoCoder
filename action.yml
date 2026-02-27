@@ -65,8 +65,8 @@ runs:
     
     - name: Commit files
       run: |
-        git config --local user.name "autocoder-bot"
         git config --local user.email "actions@github.com"
+        git config --local user.name "autocoder-bot"
         git add .
         git commit -m "Add generated code from ChatGPT" || echo "No changes to commit"
         git push origin HEAD:autocoder-branch-${{ inputs.ISSUE_NUMBER }}
