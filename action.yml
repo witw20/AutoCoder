@@ -20,6 +20,9 @@ inputs:
   REPOSITORY:
     description: 'Repository where the action is executed'
     required: true
+  ISSUE_NUMBER:
+    description: 'The number of the issue that triggered the action'
+    required: true
 
 outputs:
   pull_request_url:
