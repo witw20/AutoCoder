@@ -9,7 +9,7 @@ inputs:
   OPENAI_API_KEY:
     description: 'API key for OpenAI, enabling interactions with the ChatGPT service to generate code based on issue descriptions.'
     required: true
-  ISSUE_LABEL:
+  LABEL:
     description: 'The label assigned to GitHub issues that should be processed by the AutoCoder action. Only issues with this label will trigger the code generation process.'
     required: true
     default: 'autocoder-bot'
