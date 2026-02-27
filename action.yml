@@ -47,12 +47,7 @@ runs:
         OPENAI_API_KEY: ${{ inputs.OPENAI_API_KEY }}
         ISSUE_NUMBER: ${{ inputs.ISSUE_NUMBER }}
         REPOSITORY: ${{ inputs.REPOSITORY }}
-    - name: Create Pull Request
-      run: |
-        # The script that creates a pull request with the generated code goes here.
-      shell: bash
-      env:
-        GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
+
     - name: Make script executable
       run: chmod +x ${{ inputs.SCRIPT_PATH }}
       shell: bash
