@@ -47,4 +47,6 @@ runs:
       shell: bash
       env:
         GITHUB_TOKEN: ${{ inputs.github_token }}
-    # Add additional steps as necessary, replicating the logic from your original workflow.
+    - name: Make script executable
+      run: chmod +x ${{ inputs.script_path }}
+      shell: bash
